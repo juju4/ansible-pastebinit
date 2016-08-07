@@ -1,0 +1,20 @@
+---
+
+#- fail: msg="This role is only compatible with Ubuntu"
+#  when: ansible_distribution != 'Ubuntu'
+
+#- name: Include version-specific variables for Ubuntu.
+#  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+#  when: ansible_distribution == 'Ubuntu'
+
+- include: debian.yml
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  become: yes
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  become: yes
+
+- name: set default pastebinit config
+  template: src=pastebinit.xml.j2 dest="{{ ansible_env['HOME'] }}/.pastebinit.xml" mode=0644
+
