@@ -4,4 +4,8 @@
   yum: name={{item}} state=present
   with_items:
     - pastebinit
+  when: ansible_distribution == 'Fedora'
+
+- debug: msg="Pastebinit not available as rpm on Centos"
+  when: ansible_distribution == 'CentOS'
 
