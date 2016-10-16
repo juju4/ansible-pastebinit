@@ -5,5 +5,5 @@
 #  vars:
 #    - a:
   roles:
-    - pastebinit
+    - juju4.pastebinit
 
