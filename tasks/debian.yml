@@ -1,7 +1,6 @@
 ---
 
 - name: apt | pastebinit
-  apt: name={{item}} state=present
-  with_items:
-    - pastebinit
-
+  apt: name=pastebinit state=present
+  register: pkg_result
+  until: pkg_result is success

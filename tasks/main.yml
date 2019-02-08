@@ -12,9 +12,11 @@
   become: yes
 
 - include: redhat.yml
-  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_os_family == "RedHat"
   become: yes
 
 - name: set default pastebinit config
-  template: src=pastebinit.xml.j2 dest="{{ ansible_env['HOME'] }}/.pastebinit.xml" mode=0644
-
+  template:
+    src: pastebinit.xml.j2
+    dest: "{{ ansible_env['HOME'] }}/.pastebinit.xml"
+    mode: '0644'

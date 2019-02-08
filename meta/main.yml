@@ -17,6 +17,7 @@ galaxy_info:
     versions:
     - trusty
     - xenial
+    - bionic
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
@@ -24,5 +25,4 @@ galaxy_info:
   galaxy_tags:
   - system
 dependencies:
-  - juju4.redhat-epel
-
+  - juju4.redhat_epel

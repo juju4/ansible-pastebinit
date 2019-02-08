@@ -1,11 +1,10 @@
 ---
 
 - name: yum | pastebinit
-  yum: name={{item}} state=present
-  with_items:
-    - pastebinit
+  yum: name=pastebinit state=present
   when: ansible_distribution == 'Fedora'
+  register: pkg_result
+  until: pkg_result is success
 
 - debug: msg="Pastebinit not available as rpm on Centos"
   when: ansible_distribution == 'CentOS'
-
